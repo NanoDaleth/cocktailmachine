@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Coctelera</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-menu">
+            <button class="menu-button" onclick="showSection('orden')">Recetas</button>
+            <button class="menu-button" onclick="showSection('limpieza')">Limpieza</button>
+            <button class="menu-button" onclick="showSection('historial')">Cócteles Preparados</button>
+            <button class="menu-button" onclick="showSection('personalizado')">Cócteles Personalizados</button>
+            <button class="menu-button" onclick="showSection('configuracion')">Configuración</button>
+            <button class="menu-button" onclick="showSection('imagenIngredientes')">Disposición de Ingredientes</button>
+        </div>
+
+        <div id="orden" class="section">
+
+            <h1>Recetario de Cócteles</h1>
+
+            <!-- Receta 1 -->
+            <div class="receta">
+                <h2>Godfather</h2>
+                <img src="/img/godfather.webp" alt="Imagen de godfather" placeholder="Añadir imagen aquí">
+                <p><strong>Ingredientes:</strong></p>
+                <ul>
+                    <li>Whisky: 50 ml</li>
+                    <li>Amaretto: 25 ml</li>
+                </ul>
+                <button id="selectRecipe" onclick="ordenar('Godfather')">Ordenar</button>
+            </div>
+
+            <!-- Receta 2 -->
+            <div class="receta">
+                <h2>Godmother</h2>
+                <img src="/img/godmother.jpg" alt="Imagen de Godmother" placeholder="Añadir imagen aquí">
+                <p><strong>Ingredientes:</strong></p>
+                <ul>
+                    <li>Vodka: 50 ml</li>
+                    <li>Amaretto: 25</li>                    
+                </ul>
+                <button id="selectRecipe" onclick="ordenar('Godmother')">Ordenar</button>
+            </div>
+
+            <!-- Receta 3 -->
+            <div class="receta">
+                <h2>Rusty Nail</h2>
+                <img src="/img/rustynail.jpeg" alt="Imagen de Rusty Nail" placeholder="Añadir imagen aquí">
+                <p><strong>Ingredientes:</strong></p>
+                <ul>
+                    <li>Whisky: 50 ml</li>
+                    <li>Mazaretto: 25 ml</li>
+                </ul>
+                <button id="selectRecipe" onclick="ordenar('Rusty_Nail')">Ordenar</button>
+            </div>
+
+            <!-- Receta 4 -->
+            <div class="receta">
+                <h2>Caribbean Delight</h2>
+                <img src="/img/caribbeandelight.webp" alt="Imagen de Lemon Vodka Splash" placeholder="Añadir imagen aquí">
+                <p><strong>Ingredientes:</strong></p>
+                <ul >
+                    <li>Amaretto: 20 ml</li>
+                    <li>Ron: 45 ml</li>
+                    <li>Triple Sec: 15 ml</li>
+                </ul>
+                <button id="selectRecipe" onclick="ordenar('Caribbean_Delight')">Ordenar</button>
+            </div>     
+
+            <!-- Receta 5 -->
+            <div class="receta">
+                <h2>Black Russian</h2>
+                <img src="/img/blackrussian.jpeg" alt="Imagen de Vodka Sunset" placeholder="Añadir imagen aquí">
+                <p><strong>Ingredientes:</strong></p>
+                <ul>
+                    <li>Mazeratto: 20 ml</li>
+                    <li>Vodka: 50 ml</li>
+                </ul>
+                <button id="selectRecipe" onclick="ordenar('Black_Russian')">Ordenar</button>
+            </div>
+
+            <!-- Receta 6 -->
+            <div class="receta">
+                <h2>Kamikaze</h2>
+                <img src="/img/kamikaze.jpg" alt="Imagen de Citrus Whisky Cooler" placeholder="Añadir imagen aquí">
+                <p><strong>Ingredientes:</strong></p>
+                <ul>
+                    <li>Vodka: 30 ml</li>
+                    <li>Triple Sec: 30 ml</li>
+                </ul>
+                <button id="selectRecipe" onclick="ordenar('Kamikaze')">Ordenar</button>
+            </div>
+
+
+            <div class="bloqueo" id="bloqueo">Preparando tu cóctel...</div>
+
+
+        </div>
+
+        <div id="limpieza" class="section">
+            <img src="/img/cleaningBarman.jpg" alt="Imagen de Tropical Sunrise" placeholder="Añadir imagen aquí" id="barmanLimpiandoImg">
+            <button id="limpiarBombas" onclick="cleanPumps()">Iniciar Limpieza</button>   
+            
+            <div class="cleaning" id="cleaning">Limpiando las bombas, espere un momento...</div>
+        </div>
+
+        <div id="historial" class="section">
+
+            <h2>Historial de Pedidos</h2>
+            <div id="historialContenedor">
+                <!-- Espacio para mostrar el historial de cocteles preparados -->
+            </div>
+        </div>
+
+        <div id="personalizado" class="section">
+            <div class="custom-cocktail">
+                <div class="ingredient-selector">
+                    <h3>Whisky</h3>
+                    <select>
+                        <option value="0">0 ml-0 oz</option>
+                        <option value="15">15 ml-1/2 oz</option>
+                        <option value="30">30 ml-1 oz</option>
+                        <option value="45">45 ml-1 1/2 oz</option>
+                        <option value="60">60 ml-2 oz</option>
+                    </select>
+                </div>
+                <div class="ingredient-selector">
+                    <h3>Ron</h3>
+                    <select>
+                        <option value="0">0 ml-0 oz</option>
+                        <option value="15">15 ml-1/2 oz</option>
+                        <option value="30">30 ml-1 oz</option>
+                        <option value="45">45 ml-1 1/2 oz</option>
+                        <option value="60">60 ml-2 oz</option>
+                    </select>
+                </div>
+                <div class="ingredient-selector">
+                    <h3>Vodka</h3>
+                    <select>
+                        <option value="0">0 ml-0 oz</option>
+                        <option value="15">15 ml-1/2 oz</option>
+                        <option value="30">30 ml-1 oz</option>
+                        <option value="45">45 ml-1 1/2 oz</option>
+                        <option value="60">60 ml-2 oz</option>
+                    </select>
+                </div>
+                <div class="ingredient-selector">
+                    <h3>Amaretto</h3>
+                    <select>
+                        <option value="0">0 ml-0 oz</option>
+                        <option value="15">15 ml-1/2 oz</option>
+                        <option value="30">30 ml-1 oz</option>
+                        <option value="45">45 ml-1 1/2 oz</option>
+                        <option value="60">60 ml-2 oz</option>
+                    </select>
+                </div>
+                <div class="ingredient-selector">
+                    <h3>Mazeratto</h3>
+                    <select>
+                        <option value="0">0 ml-0 oz</option>
+                        <option value="15">15 ml-1/2 oz</option>
+                        <option value="30">30 ml-1 oz</option>
+                        <option value="45">45 ml-1 1/2 oz</option>
+                        <option value="60">60 ml-2 oz</option>
+                    </select>
+                </div>
+                <div class="ingredient-selector">
+                    <h3>Triple Sec</h3>
+                    <select>
+                        <option value="0">0 ml-0 oz</option>
+                        <option value="15">15 ml-1/2 oz</option>
+                        <option value="30">30 ml-1 oz</option>
+                        <option value="45">45 ml-1 1/2 oz</option>
+                        <option value="60">60 ml-2 oz</option>
+                    </select>
+                </div>
+            </div>
+            <button class="recipe-button">Preparar Personalizado</button>
+
+            <div class="bloqueo2" id="bloqueo2">Preparando tu cóctel...</div>
+        </div>
+
+        <div id="configuracion" class="section">
+            <!--Volumenes Actuales-->
+            <div class="config-section">
+                <h3 class="config-title">Volúmenes Actuales</h3>
+                <table id="volumenes-actuales">
+                    <thead>
+                        <tr>
+                            <th>Ingrediente</th>
+                            <th>Volumen (ml)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <!--Volumenes Iniciales-->
+            <div class="config-section">
+                <h3 class="config-title">Configurar Volúmenes Iniciales</h3>
+                <table id="volumenes-iniciales">
+                    <thead>
+                        <tr>
+                            <th>Ingrediente</th>
+                            <th>Volumen (ml)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <button id="guardar-volumenes" class="button-config">Guardar Volúmenes</button>
+            </div>
+            <!--Densidades-->
+            <div class="config-section">
+                <h3 class="config-title">Densidades</h3>
+                <table id="densidades">
+                    <thead>
+                        <tr>
+                            <th>Ingrediente</th>
+                            <th>Densidad (g/ml)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <button id="guardar-densidades" class="button-config">Guardar Densidades</button>
+            </div>
+        </div>
+
+        <div id="imagenIngredientes" class="section">
+            <img src="/img/ubicacionIngredientes.jpg" alt="" id="ingredientesUbicacion">
+        </div>
+
+    </div>
+    
+    
+    <!-- Scripts para el funcionamiento de la pagina web -->    
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/main.js" type="module"></script>
+
+    
+</body>
+</html>

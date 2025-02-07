@@ -499,11 +499,12 @@ window.crearPedidoPersonalizado = async function() {
                 document.querySelectorAll('#personalizado select').forEach(select => {
                     select.value = "0"; // Restablecer el valor del select a 0
                 });
+                actualizarImagen();
                 set(ref(db,'pedido/listo'),false)
                 set(ref(db,'pedido/preparar'),false)
             }
         });
-        actualizarImagen();
+        
 
     } catch (error) {
         console.error('Error al crear el pedido personalizado:', error);

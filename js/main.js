@@ -267,11 +267,26 @@ const cargarVolumenesActuales = () => {
         const volumenes = snapshot.val();
         const tablaActuales = document.querySelector('#volumenes-actuales tbody');
         tablaActuales.innerHTML = '';
+        let ingrediente2 = "";
 
         for (let ingrediente in volumenes) {
+
+            console.log(ingrediente);
+
+            // Modificar los nombres de los ingredientes según sea necesario
+            if (ingrediente === "jugonaranja") {
+                ingrediente2 = "Jugo de Naranja".toUpperCase();
+            } else if (ingrediente === "zumolimon") {
+                ingrediente2 = "Zumo de Limón".toUpperCase();
+            } else {
+                ingrediente2 = ingrediente.toUpperCase();  // Para el resto de los ingredientes, usar el nombre tal cual
+            }
+
+            console.log("2", ingrediente2);            
+
             tablaActuales.innerHTML += `
                 <tr>
-                    <td>${ingrediente}</td>
+                    <td>${ingrediente2}</td>
                     <td>${volumenes[ingrediente]}</td>
                 </tr>
             `;
@@ -286,11 +301,22 @@ const cargarVolumenesIniciales = () => {
         const volumenes = snapshot.val();
         const tablaIniciales = document.querySelector('#volumenes-iniciales tbody');
         tablaIniciales.innerHTML = '';
+        let ingrediente2 = "";
 
         for (let ingrediente in volumenes) {
+
+            // Modificar los nombres de los ingredientes según sea necesario
+            if (ingrediente === "jugonaranja") {
+                ingrediente2 = "Jugo de Naranja".toUpperCase();
+            } else if (ingrediente === "zumolimon") {
+                ingrediente2 = "Zumo de Limón".toUpperCase();
+            } else {
+                ingrediente2 = ingrediente.toUpperCase();  // Para el resto de los ingredientes, usar el nombre tal cual
+            }
+
             tablaIniciales.innerHTML += `
                 <tr>
-                    <td>${ingrediente}</td>
+                    <td>${ingrediente2}</td>
                     <td><input type="number" id="volumen-${ingrediente}" value="${volumenes[ingrediente]}"></td>
                 </tr>
             `;
@@ -321,11 +347,21 @@ const cargarDensidades = () => {
         const densidades = snapshot.val() || {};
         const tablaDensidades = document.querySelector('#densidades tbody');
         tablaDensidades.innerHTML = '';
+        let ingrediente2 = "";
 
         for (let ingrediente in densidades) {
+
+            // Modificar los nombres de los ingredientes según sea necesario
+            if (ingrediente === "jugonaranja") {
+                ingrediente2 = "Jugo de Naranja".toUpperCase();
+            } else if (ingrediente === "zumolimon") {
+                ingrediente2 = "Zumo de Limón".toUpperCase();
+            } else {
+                ingrediente2 = ingrediente.toUpperCase();  // Para el resto de los ingredientes, usar el nombre tal cual
+            }
             tablaDensidades.innerHTML += `
                 <tr>
-                    <td>${ingrediente}</td>
+                    <td>${ingrediente2}</td>
                     <td><input type="number" id="densidad-${ingrediente}" step="0.01" value="${densidades[ingrediente]}"></td>
                 </tr>
             `;
@@ -412,8 +448,16 @@ window.crearPedidoPersonalizado = async function() {
             let ingrediente = select.previousElementSibling.textContent.trim().toLowerCase(); // Obtener el nombre del ingrediente del <h3>
             console.log(ingrediente)
             
-            ingrediente = ingrediente === "jugo de naranja" ? "jugonaranja" : ingrediente;
-            ingrediente = ingrediente === "zumo de limon" ? "zumolimon" : ingrediente;
+            
+            console.log(ingrediente);
+
+            // Modificar los nombres de los ingredientes según sea necesario
+            if (ingrediente === "jugo de naranja") {
+                ingrediente = "jugonaranja";
+            } else if (ingrediente === "zumo de limón") {
+                ingrediente = "zumolimon";
+            } 
+
 
             if (cantidad > 0) { // Ignorar ingredientes con valor 0 ml
                 ingredientesSeleccionados[ingrediente] = cantidad;
@@ -459,6 +503,7 @@ window.crearPedidoPersonalizado = async function() {
                 set(ref(db,'pedido/preparar'),false)
             }
         });
+        actualizarImagen();
 
     } catch (error) {
         console.error('Error al crear el pedido personalizado:', error);

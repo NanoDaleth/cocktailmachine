@@ -28,8 +28,8 @@
                 <img src="/img/godfather.webp" alt="Imagen de godfather" placeholder="Añadir imagen aquí">
                 <p><strong>Ingredientes:</strong></p>
                 <ul>
-                    <li>Whisky: 50 ml</li>
-                    <li>Amaretto: 25 ml</li>
+                    <li>Whisky: 60 ml</li>
+                    <li>Amaretto: 30 ml</li>
                 </ul>
                 <button id="selectRecipe" onclick="ordenar('Godfather')">Ordenar</button>
             </div>
@@ -40,60 +40,37 @@
                 <img src="/img/godmother.jpg" alt="Imagen de Godmother" placeholder="Añadir imagen aquí">
                 <p><strong>Ingredientes:</strong></p>
                 <ul>
-                    <li>Vodka: 50 ml</li>
-                    <li>Amaretto: 25</li>                    
+                    <li>Vodka: 60ml</li>
+                    <li>Amaretto: 30 ml</li>                    
                 </ul>
                 <button id="selectRecipe" onclick="ordenar('Godmother')">Ordenar</button>
             </div>
 
             <!-- Receta 3 -->
             <div class="receta">
-                <h2>Rusty Nail</h2>
-                <img src="/img/rustynail.jpeg" alt="Imagen de Rusty Nail" placeholder="Añadir imagen aquí">
+                <h2>Destornillador</h2>
+                <img src="/img/destornillador.jpg" alt="Imagen de destornillador" placeholder="Añadir imagen aquí">
                 <p><strong>Ingredientes:</strong></p>
                 <ul>
-                    <li>Whisky: 50 ml</li>
-                    <li>Mazaretto: 25 ml</li>
+                    <li>Whisky:  60 ml</li>
+                    <li>Jugo de Naranja: 30 ml</li>
+                    <li>Zumo de Limón: 30 ml</li>
                 </ul>
-                <button id="selectRecipe" onclick="ordenar('Rusty_Nail')">Ordenar</button>
+                <button id="selectRecipe" onclick="ordenar('Destornillador')">Ordenar</button>
             </div>
 
             <!-- Receta 4 -->
             <div class="receta">
-                <h2>Caribbean Delight</h2>
-                <img src="/img/caribbeandelight.webp" alt="Imagen de Lemon Vodka Splash" placeholder="Añadir imagen aquí">
+                <h2>Ron Cítrico</h2>
+                <img src="/img/roncitrico2.jpg" alt="Imagen de ron citrico" placeholder="Añadir imagen aquí">
                 <p><strong>Ingredientes:</strong></p>
                 <ul >
-                    <li>Amaretto: 20 ml</li>
-                    <li>Ron: 45 ml</li>
-                    <li>Triple Sec: 15 ml</li>
+                    <li>Ron: 60 ml</li>
+                    <li>Jugo de Naranja: 30 ml</li>
+                    <li>Zumo de Limón: 30 ml</li>
                 </ul>
-                <button id="selectRecipe" onclick="ordenar('Caribbean_Delight')">Ordenar</button>
+                <button id="selectRecipe" onclick="ordenar('roncitrico')">Ordenar</button>
             </div>     
-
-            <!-- Receta 5 -->
-            <div class="receta">
-                <h2>Black Russian</h2>
-                <img src="/img/blackrussian.jpeg" alt="Imagen de Vodka Sunset" placeholder="Añadir imagen aquí">
-                <p><strong>Ingredientes:</strong></p>
-                <ul>
-                    <li>Mazeratto: 20 ml</li>
-                    <li>Vodka: 50 ml</li>
-                </ul>
-                <button id="selectRecipe" onclick="ordenar('Black_Russian')">Ordenar</button>
-            </div>
-
-            <!-- Receta 6 -->
-            <div class="receta">
-                <h2>Kamikaze</h2>
-                <img src="/img/kamikaze.jpg" alt="Imagen de Citrus Whisky Cooler" placeholder="Añadir imagen aquí">
-                <p><strong>Ingredientes:</strong></p>
-                <ul>
-                    <li>Vodka: 30 ml</li>
-                    <li>Triple Sec: 30 ml</li>
-                </ul>
-                <button id="selectRecipe" onclick="ordenar('Kamikaze')">Ordenar</button>
-            </div>
 
 
             <div class="bloqueo" id="bloqueo">Preparando tu cóctel...</div>
@@ -117,6 +94,13 @@
         </div>
 
         <div id="personalizado" class="section">
+
+            <!-- Imágenes de cócteles -->
+            <div id="cocktail-image">
+                <img id="cocktail0" src="/img/cocktail0.webp" alt="Cóctel 0" style="display:block;">
+                <img id="cocktail1" src="/img/cocktail1.webp" alt="Cóctel 1" style="display:none;">
+            </div>
+
             <div class="custom-cocktail">
                 <div class="ingredient-selector">
                     <h3>Whisky</h3>
@@ -159,7 +143,7 @@
                     </select>
                 </div>
                 <div class="ingredient-selector">
-                    <h3>Mazeratto</h3>
+                    <h3>Jugo de Naranja</h3>
                     <select>
                         <option value="0">0 ml-0 oz</option>
                         <option value="15">15 ml-1/2 oz</option>
@@ -169,7 +153,7 @@
                     </select>
                 </div>
                 <div class="ingredient-selector">
-                    <h3>Triple Sec</h3>
+                    <h3>Zumo de Limon</h3>
                     <select>
                         <option value="0">0 ml-0 oz</option>
                         <option value="15">15 ml-1/2 oz</option>

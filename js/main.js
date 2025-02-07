@@ -404,6 +404,7 @@ window.crearPedidoPersonalizado = async function() {
         }
 
         const ingredientesSeleccionados = {};
+        let totalCantidad = 0; // Variable para sumar las cantidades de los ingredientes
 
         // Seleccionar todos los elementos <select> dentro de la sección de cócteles personalizados
         document.querySelectorAll('#personalizado select').forEach(select => {
@@ -411,12 +412,20 @@ window.crearPedidoPersonalizado = async function() {
             let ingrediente = select.previousElementSibling.textContent.trim().toLowerCase(); // Obtener el nombre del ingrediente del <h3>
             console.log(ingrediente)
             
-            ingrediente = ingrediente === "triple sec" ? "tripleSec" : ingrediente;
+            ingrediente = ingrediente === "jugo de naranja" ? "jugonaranja" : ingrediente;
+            ingrediente = ingrediente === "zumo de limon" ? "zumolimon" : ingrediente;
 
             if (cantidad > 0) { // Ignorar ingredientes con valor 0 ml
                 ingredientesSeleccionados[ingrediente] = cantidad;
+                totalCantidad += cantidad; // Sumar la cantidad del ingrediente
             }
         });
+
+        // Verificar si el total de los ingredientes excede los 150 ml
+        if (totalCantidad > 150) {
+            Swal.fire('El total de ingredientes no puede exceder los 150 ml.');
+            return;
+        }
 
         // Verificar si se seleccionó al menos un ingrediente
         if (Object.keys(ingredientesSeleccionados).length === 0) {
@@ -442,6 +451,10 @@ window.crearPedidoPersonalizado = async function() {
             if (snapshot.val() === true) {
                 document.getElementById('bloqueo2').style.display = 'none';
                 Swal.fire('¡Tu bebida está lista!');
+                // Restablecer todos los valores de los select a "0"
+                document.querySelectorAll('#personalizado select').forEach(select => {
+                    select.value = "0"; // Restablecer el valor del select a 0
+                });
                 set(ref(db,'pedido/listo'),false)
                 set(ref(db,'pedido/preparar'),false)
             }
@@ -453,7 +466,26 @@ window.crearPedidoPersonalizado = async function() {
     }
 }
 
+// Función para cambiar la imagen del cóctel
+function actualizarImagen() {
+    let cocktailImage = false;  // Variable para verificar si se debe mostrar cocktail1
 
+    // Recorrer todos los <select> y verificar si alguno tiene un valor distinto a 0
+    document.querySelectorAll('#personalizado select').forEach(select => {
+        if (select.value !== "0") {
+            cocktailImage = true;  // Si cualquier valor es distinto de 0, mostrar cocktail1
+        }
+    });
+
+    // Mostrar la imagen correspondiente
+    if (cocktailImage) {
+        document.getElementById('cocktail0').style.display = 'none';
+        document.getElementById('cocktail1').style.display = 'block';
+    } else {
+        document.getElementById('cocktail0').style.display = 'block';
+        document.getElementById('cocktail1').style.display = 'none';
+    }
+}
 
 
 window.onload = () => {
@@ -467,6 +499,14 @@ window.onload = () => {
     document.getElementById('guardar-volumenes').addEventListener('click', guardarVolumenes);
     document.getElementById('guardar-densidades').addEventListener('click', guardarDensidades);
     document.querySelector('.recipe-button').addEventListener('click', crearPedidoPersonalizado);
+
+    // Asignar el evento para actualizar la imagen cuando cambien los select
+    document.querySelectorAll('#personalizado select').forEach(select => {
+        select.addEventListener('change', actualizarImagen);
+    });
+
+    // Llamar a la función al cargar la página para establecer la imagen correcta inicialmente
+    actualizarImagen();
     
 };
 

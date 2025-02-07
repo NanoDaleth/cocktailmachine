@@ -269,9 +269,17 @@ input[type="number"] {
 
 /*Ubicacion de Ingredientes*/
 #ingredientesUbicacion {
-    width: 100%;
+    width: 80%;
     height: auto;
     border-radius: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#cocktail-image img {
+    width: 200px;  /* Ajusta el valor según el tamaño que prefieras */
+    height: auto;  /* Mantiene la proporción de la imagen */
+    border-radius: 50px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
